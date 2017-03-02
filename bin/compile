@@ -48,9 +48,9 @@ fi
 
 # Output info about requested version and resolved Nginx version
 if [ "$nginx_version" == "" ]; then
-  nginx_version="1.7.9"
-  nginx_url="http://nginx.org/download/nginx-1.7.9.tar.gz"
-  info "Defaulting to version 1.7.9."
+  nginx_version="1.9.9"
+  nginx_url="http://nginx.org/download/nginx-1.9.9.tar.gz  "
+  info "Defaulting to version 1.9.9."
 # elif [ "$nginx_version" == "mainline" ]; then
 #   nginx_version="mainline"
 #   nginx_url="http://nginx.org/download/nginx-1.7.9.tar.gz"
@@ -96,7 +96,7 @@ if ! test -d $cache_dir/nginx || ! test -f $cache_dir/nginx/.heroku/nginx-versio
 
   head "Compiling Nginx..."
   head "Configuring"
-  ./configure 2>&1 | indent
+  ./configure --with-http_gzip_static_module 2>&1 | indent
   head "Compiling with Make"
   make 2>&1 | indent
   head "Moving generated binary"
