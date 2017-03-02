@@ -119,7 +119,8 @@ else
   cp -R "$cache_dir/nginx" "$build_dir/vendor"
 fi
 
-# build a startup script
+#build a startup script
+if [[ ! -f $build_dir/bin/start_nginx ]]; then
 echo -n "-----> Creating startup script... "
 mkdir "$build_dir/bin"
 cat <<EOF >"$build_dir/bin/start_nginx"
@@ -132,7 +133,7 @@ exec nginx -p .
 EOF
 chmod +x "$build_dir/bin/start_nginx"
 echo "done"
-
+fi
 if [[ ! -f $build_dir/Procfile ]]; then
   echo -n "-----> Creating Procfile... "
   echo "web: bin/start_nginx" > $build_dir/Procfile
