@@ -132,13 +132,13 @@ touch logs/access.log logs/error.log
 
 # We block on app-initialized so that when nginx binds to $PORT
 # are app is ready for traffic.
-FILE="/tmp/app-initialized"
-while [[ ! -f "$FILE" ]]
-do
-  echo 'buildpack=nginx at=app-initialization'
-  sleep 1
-done
-echo 'buildpack=nginx at=app-initialized'
+# FILE="/tmp/app-initialized"
+# while [[ ! -f "$FILE" ]]
+# do
+#   echo 'buildpack=nginx at=app-initialization'
+#   sleep 1
+# done
+# echo 'buildpack=nginx at=app-initialized'
 
 exec nginx -p .
 EOF
